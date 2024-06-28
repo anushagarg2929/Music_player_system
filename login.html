@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Sign Up Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000; /* Black background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #ffffff; /* White text for readability */
+        }
+        .container {
+            background-color: #222222; /* Dark gray container background */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Slightly darker shadow */
+            width: 300px;
+            text-align: center;
+            border-radius: 10px; /* Rounded corners */
+        }
+        .container h2 {
+            margin-bottom: 20px;
+        }
+        .container form {
+            display: none;
+        }
+        .container form.active {
+            display: block;
+        }
+        .container input[type="text"], .container input[type="password"], .container input[type="email"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #555555; /* Darker border for inputs */
+            background-color: #333333; /* Dark gray input background */
+            color: #ffffff; /* White text inside inputs */
+        }
+        .container button {
+            padding: 10px;
+            width: 100%;
+            border: none;
+            background-color: #5cb85c;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #4cae4c;
+        }
+        .container .toggle {
+            margin-top: 20px;
+            cursor: pointer;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 id="form-title">Login</h2>
+    <form id="login-form" class="active">
+        <input type="text" id="login-username" placeholder="Username" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+    <form id="signup-form">
+        <input type="text" id="signup-username" placeholder="Username" required>
+        <input type="email" id="signup-email" placeholder="Email" required>
+        <input type="password" id="signup-password" placeholder="Password" required>
+        <button type="submit">Sign Up</button>
+    </form>
+    <div class="toggle" id="toggle-form">Don't have an account? Sign Up</div>
+</div>
+
+<script>
+    const toggleForm = document.getElementById('toggle-form');
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+    const formTitle = document.getElementById('form-title');
+
+    toggleForm.addEventListener('click', () => {
+        if (loginForm.classList.contains('active')) {
+            loginForm.classList.remove('active');
+            signupForm.classList.add('active');
+            formTitle.textContent = 'Sign Up';
+            toggleForm.textContent = 'Already have an account? Login';
+        } else {
+            signupForm.classList.remove('active');
+            loginForm.classList.add('active');
+            formTitle.textContent = 'Login';
+            toggleForm.textContent = "Don't have an account? Sign Up";
+        }
+    });
+</script>
+
+</body>
+</html>
